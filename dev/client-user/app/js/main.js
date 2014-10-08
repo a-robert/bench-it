@@ -6,10 +6,16 @@ require.config({
         angularRoute: '../bower_components/angular-route/angular-route',
         angularMocks: '../bower_components/angular-mocks/angular-mocks',
         text: '../bower_components/requirejs-text/text',
-        modernizr: '../bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js'
+        modernizr: '../bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js',
+        less: '../bower_components/less/dist/less-1.7.3.min',
+        jquery: '../bower_components/jquery/dist/jquery.min',
+        bootstrap: '../bower_components/bootstrap/dist/js/bootstrap.min'
     },
     shim: {
-        'angular' : {'exports' : 'angular'},
+        'angular' : {
+            deps: ['jquery'],
+            'exports' : 'angular'
+        },
         'angularRoute': ['angular'],
         'angularMocks': {
             deps:['angular'],
@@ -25,10 +31,13 @@ require.config({
 window.name = "NG_DEFER_BOOTSTRAP!";
 
 require([
+    'jquery',
     'angular',
     'app',
-    'routes'
-], function(angular, app, routes) {
+    'routes',
+    'less',
+    'bootstrap'
+], function($, angular, app, routes) {
     var $html = angular.element(document.getElementsByTagName('html')[0]);
 
     angular.element().ready(function() {
