@@ -16,6 +16,7 @@ define([
             templateUrl: 'app/partials/test1.html',
             controller: 'test1Ctrl'
         });
+        
         $routeProvider.otherwise({redirectTo: '/home'});
     }]);
 });
